@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 232 48" role="img" aria-label="RoofWrap">
+  <!-- icon: roof peak being wrapped -->
+  <path d="M6 27 L22 11 L38 27" fill="none" stroke="#e05a1f" stroke-width="4.4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M7 30.5 L33 30.5 L37 39 L11 39 Z" fill="#1c1a17"/>
+  <!-- wordmark -->
+  <text x="50" y="33" font-family="'Bricolage Grotesque', 'Archivo', Arial, sans-serif" font-size="27" font-weight="800" letter-spacing="-0.5">
+    <tspan fill="#1c1a17">Roof</tspan><tspan fill="#e05a1f">Wrap</tspan>
+  </text>
+</svg>

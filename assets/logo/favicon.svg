@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-label="RoofWrap">
+  <rect width="48" height="48" rx="11" fill="#e05a1f"/>
+  <path d="M8.5 27 L24 12 L39.5 27" fill="none" stroke="#ffffff" stroke-width="4.6" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M9.5 30.5 L34.5 30.5 L38.5 39 L13.5 39 Z" fill="#ffffff"/>
+</svg>
