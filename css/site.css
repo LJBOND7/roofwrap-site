@@ -293,6 +293,8 @@ section{ position:relative; }
 .tile__inner{ display:grid; grid-template-columns:1.04fr .96fr; gap:clamp(32px,5vw,72px); align-items:center; }
 .tile__visual{ margin:0; }
 .tile__visual img{ width:100%; border-radius:18px; border:1px solid var(--line); box-shadow:0 30px 70px -40px rgba(28,26,23,.6); }
+.tile__visual--pair{ display:flex; flex-direction:column; gap:20px; }
+.tile__visual--pair img{ aspect-ratio:4/3; object-fit:cover; }
 .tile__points{ list-style:none; margin:24px 0 32px; padding:0; display:flex; flex-direction:column; gap:13px; }
 .tile__points li{ position:relative; padding-left:32px; color:var(--body); font-size:1.04rem; }
 .tile__points li::before{ content:"✓"; position:absolute; left:0; top:1px; width:21px; height:21px; line-height:21px; text-align:center; font-size:.8rem; font-weight:800; color:#fff; background:var(--orange); border-radius:6px; }
