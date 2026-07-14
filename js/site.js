@@ -61,6 +61,48 @@
     setP(parseFloat(range.value));
   });
 
+  /* ---- Protect card photo sliders (rotating multi-photo cards) ---- */
+  document.querySelectorAll("[data-slider]").forEach((card) => {
+    const slides = Array.from(card.querySelectorAll(".pslide"));
+    if (slides.length < 2) return;
+    const dotsWrap = card.querySelector(".pslide__dots");
+    const prevBtn = card.querySelector(".pslide__arrow--prev");
+    const nextBtn = card.querySelector(".pslide__arrow--next");
+    let index = Math.max(0, slides.findIndex((s) => s.classList.contains("is-active")));
+    let timer = null;
+
+    const dots = slides.map((_, i) => {
+      const dot = document.createElement("button");
+      dot.type = "button";
+      dot.className = "pslide__dot" + (i === index ? " is-active" : "");
+      dot.setAttribute("aria-label", "Show photo " + (i + 1));
+      dot.addEventListener("click", () => { goTo(i); restart(); });
+      dotsWrap.appendChild(dot);
+      return dot;
+    });
+
+    function render() {
+      slides.forEach((s, i) => s.classList.toggle("is-active", i === index));
+      dots.forEach((d, i) => d.classList.toggle("is-active", i === index));
+    }
+    function goTo(i) { index = (i + slides.length) % slides.length; render(); }
+    function next() { goTo(index + 1); }
+    function prev() { goTo(index - 1); }
+    function restart() {
+      if (reducedMotion) return;
+      clearInterval(timer);
+      timer = setInterval(next, 4200);
+    }
+
+    prevBtn.addEventListener("click", () => { prev(); restart(); });
+    nextBtn.addEventListener("click", () => { next(); restart(); });
+    card.addEventListener("mouseenter", () => clearInterval(timer));
+    card.addEventListener("mouseleave", restart);
+
+    render();
+    restart();
+  });
+
   /* ==============================================================
      Hero "seal" sequence
      ============================================================== */
