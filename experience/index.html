@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b0e12">
+<title>The RoofWrap Story | From Fire Loss to Fully Protected</title>
+<meta name="description" content="Scroll through a real RoofWrap project: one apartment building, a catastrophic fire, and the engineered white membrane that sealed the entire roof in days. Scrolling controls time.">
+<link rel="canonical" href="https://roofwrap.com/experience/">
+
+<meta property="og:title" content="The RoofWrap Story. From fire loss to fully protected.">
+<meta property="og:description" content="One building. One fire. One continuous scroll from catastrophe to a fully wrapped, watertight roof. A real RoofWrap project.">
+<meta property="og:image" content="https://roofwrap.com/assets/img/multifamily-after.jpg">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://roofwrap.com/experience/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The RoofWrap Story. From fire loss to fully protected.">
+<meta name="twitter:description" content="Scroll controls time: fire, suppression, exposure, and the RoofWrap envelope. A real project.">
+<meta name="twitter:image" content="https://roofwrap.com/assets/img/multifamily-after.jpg">
+
+<link rel="icon" type="image/svg+xml" href="/assets/logo/favicon.svg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="preload" as="image" href="/assets/img/story-damage-real.jpg">
+<link rel="preload" as="image" href="/assets/img/multifamily-after.jpg">
+
+<link rel="stylesheet" href="/experience/experience.css">
+
+<script type="importmap">
+{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.module.js" } }
+</script>
+</head>
+<body>
+
+<h1 class="sr-only">The RoofWrap story: one building, from catastrophic fire to a fully protected roof. Scroll to move through time.</h1>
+
+<!-- Scroll length driver (empty, sets page height) -->
+<div id="scroll-space" aria-hidden="true"></div>
+
+<!-- Live 3D scene -->
+<canvas id="scene" aria-hidden="true"></canvas>
+
+<!-- Real photograph dissolve layers -->
+<div class="photo" id="photo-before" aria-hidden="true">
+  <img src="/assets/img/story-damage-real.jpg" alt="">
+</div>
+<div class="photo" id="photo-after" aria-hidden="true">
+  <img src="/assets/img/multifamily-after.jpg" alt="">
+</div>
+
+<!-- Film treatment -->
+<div class="vignette" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+
+<!-- Narrative captions -->
+<div id="captions" aria-hidden="true">
+  <p class="cap cap--center" data-in="0.02"  data-out="0.125">Everything can change<br>in minutes.</p>
+  <p class="cap" data-in="0.17"  data-out="0.29">Fire doesn&rsquo;t wait.</p>
+  <p class="cap" data-in="0.345" data-out="0.435">And putting out the fire<br>is only the beginning.</p>
+  <p class="cap" data-in="0.452" data-out="0.508">The structure survived.</p>
+  <p class="cap" data-in="0.522" data-out="0.575">Now protect what&rsquo;s left.</p>
+  <p class="cap cap--act" data-in="0.60"  data-out="0.655">Cover it.</p>
+  <p class="cap cap--act" data-in="0.675" data-out="0.73">Secure it.</p>
+  <p class="cap cap--act" data-in="0.75"  data-out="0.805">Protect it.</p>
+  <p class="cap" data-in="0.828" data-out="0.868">From exposed&hellip;</p>
+  <p class="cap" data-in="0.876" data-out="0.918">&hellip;to protected.</p>
+</div>
+
+<!-- Finale -->
+<section class="finale" id="finale">
+  <svg class="finale__logo" viewBox="0 0 300 56" role="img" aria-label="RoofWrap">
+    <path d="M14 40 L48 10 L82 40 L67 40 L48 24 L29 40 Z" fill="#f26b3a"/>
+    <path d="M64 40 L82 24 L100 40 Z" fill="#ffffff"/>
+    <text x="108" y="38" font-family="'Bricolage Grotesque','Archivo',Arial,sans-serif" font-size="32" font-weight="800" letter-spacing="-0.8"><tspan fill="#ffffff">Roof</tspan><tspan fill="#f26b3a">Wrap</tspan></text>
+  </svg>
+  <p class="finale__tag">Temporary protection.<br>Engineered for catastrophic damage.</p>
+  <div class="finale__ctas">
+    <a class="btn btn--orange" href="/#how">See How RoofWrap Works</a>
+    <a class="btn btn--ghost" href="tel:+17862541577">Call (786) 254-1577</a>
+  </div>
+  <p class="finale__note">You just watched a real RoofWrap project. Fire loss, multifamily, fully wrapped in days.</p>
+  <button class="finale__replay" id="replay" type="button">Replay the story</button>
+</section>
+
+<!-- HUD -->
+<header class="hud">
+  <a class="hud__logo" href="/" aria-label="RoofWrap home">
+    <svg viewBox="0 0 300 56" width="170" height="32" role="img" aria-label="RoofWrap">
+      <path d="M14 40 L48 10 L82 40 L67 40 L48 24 L29 40 Z" fill="#f26b3a"/>
+      <path d="M64 40 L82 24 L100 40 Z" fill="#ffffff"/>
+      <text x="108" y="38" font-family="'Bricolage Grotesque','Archivo',Arial,sans-serif" font-size="32" font-weight="800" letter-spacing="-0.8"><tspan fill="#ffffff">Roof</tspan><tspan fill="#f26b3a">Wrap</tspan></text>
+    </svg>
+  </a>
+  <a class="hud__exit" href="/">roofwrap.com</a>
+</header>
+
+<div class="scrollhint" id="scrollhint" aria-hidden="true">
+  <span>Scroll to begin</span>
+  <span class="scrollhint__line"></span>
+</div>
+
+<div class="progress" aria-hidden="true"><div class="progress__fill" id="progressfill"></div></div>
+
+<!-- Loader -->
+<div class="loader" id="loader">
+  <svg viewBox="0 0 100 56" width="72" aria-hidden="true">
+    <path d="M14 46 L50 12 L86 46 L70 46 L50 27 L30 46 Z" fill="#f26b3a"/>
+  </svg>
+  <div class="loader__bar"><span></span></div>
+</div>
+
+<!-- No-WebGL / reduced-motion fallback -->
+<article class="fallback" id="fallback" hidden>
+  <section class="fallback__panel fallback__panel--dark">
+    <h1>Everything can change in minutes.</h1>
+    <p>One apartment building. One fire. This is a real RoofWrap project.</p>
+  </section>
+  <section class="fallback__panel">
+    <img src="/assets/img/story-damage-real.jpg" alt="Aerial photo of an apartment building with its center roof burned away, rafters exposed">
+    <h2>The structure survived. Now protect what&rsquo;s left.</h2>
+    <p>The fire is out, but the roof is open. Rain, wind, and weather can now destroy what the fire spared.</p>
+  </section>
+  <section class="fallback__panel">
+    <img src="/assets/img/multifamily-after.jpg" alt="The same building fully covered by a taut white RoofWrap membrane wrapping the entire roof perimeter">
+    <h2>From exposed to protected.</h2>
+    <p>One continuous white membrane, tensioned and secured around the entire roof perimeter. Not a tarp. A temporary roof envelope.</p>
+    <div class="finale__ctas">
+      <a class="btn btn--orange" href="/#how">See How RoofWrap Works</a>
+      <a class="btn btn--ghost" href="tel:+17862541577">Call (786) 254-1577</a>
+    </div>
+  </section>
+</article>
+
+<script type="module" src="/experience/experience.js"></script>
+<script>
+setTimeout(function () {
+  if (!window.__expBooted) {
+    document.body.classList.add('is-fallback');
+    document.getElementById('fallback').hidden = false;
+    document.getElementById('loader').classList.add('is-done');
+  }
+}, 7000);
+</script>
+</body>
+</html>
